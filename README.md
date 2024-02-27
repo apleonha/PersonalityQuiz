@@ -9,3 +9,5 @@ We plan to build a personality quiz that evaluates users' personality type based
 Andie Leonhard @apleonha
 
 Emily Weed @emilyweed
+
+Steven Pursley @spursley18
