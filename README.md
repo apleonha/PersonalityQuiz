@@ -13,7 +13,7 @@ We plan to build a personality quiz that evaluates users' personality type based
 </ul>
 <b>Emily</b>
 <ul>
-  <li>display1-display9</li>
+  <li>display1To9</li>
   <li>displayTypes</li>
 </ul>
 
