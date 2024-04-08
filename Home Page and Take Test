@@ -2,3 +2,6 @@
 // Steven Pursley
 // 8 April 2024
 // These methods help create the homepage and also allow the user to take the enneagram personality test.
+
+//This method is used to display the homepage of the personality quiz.
+displayHomePage()
