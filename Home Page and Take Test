@@ -4,4 +4,51 @@
 // These methods help create the homepage and also allow the user to take the enneagram personality test.
 
 //This method is used to display the homepage of the personality quiz.
-displayHomePage()
+displayHomePage() {
+
+}
+
+//This method allow the user to start the quiz.
+startTest() {
+
+}
+
+//This allows the user to exit the program.
+exitProgram() {
+
+}
+
+//This method displays the current question the user is on.
+displayQuestion() {
+
+}
+
+//This method is used to get the users answer to the current question.
+getAnswer() {
+
+}
+
+//This method is used to validate the user's answer to the current question.
+validateAnswer() {
+
+}
+
+//This method is used to store the user's answer to the current question.
+storeAnswer() {
+
+}
+
+//This method is called after the user submits their answer to the current question.
+nextQuestion() {
+
+}
+
+//This method is called after the user completes all the questions.
+caculateResults() {
+
+}
+
+//This method is used to display the user's enneagram personality type and description of the type.
+displayResult() {
+
+}
