@@ -23,3 +23,20 @@ private void display1To9() {
   JButton backButton = new JButton("Back to Homepage");
     //GUI for buttons
 }
+
+// Displays types in a list
+private void displayTypes() {
+  JFrame frame = new JFrame("Enneagram Types");
+  //frame size
+  //panel and text area
+
+  // Lists types
+  String[] types = {"Type 1: The Reformer", ....};
+
+  // Buttons to display info about each type
+  JButton displayInfoButton = new JButton("Show Details");
+
+  // button to go back to homepage
+    JButton backButton = new JButton("Back to Homepage");
+    //GUI for buttons
+}
