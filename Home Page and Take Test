@@ -4,12 +4,12 @@
 // These methods help create the homepage and also allow the user to take the enneagram personality test.
 
 //This method is used to display the homepage of the personality quiz.
-displayHomePage() {
+homePage() {
 
 }
 
 //This method allow the user to start the quiz.
-startTest() {
+takeTest() {
 
 }
 
@@ -30,7 +30,6 @@ getAnswer() {
 
 //This method is used to validate the user's answer to the current question.
 validateAnswer() {
-
 }
 
 //This method is used to store the user's answer to the current question.
@@ -39,16 +38,52 @@ storeAnswer() {
 }
 
 //This method is called after the user submits their answer to the current question.
+//calls method to update user score
 nextQuestion() {
 
 }
 
-//This method is called after the user completes all the questions.
-caculateResults() {
-
-}
-
-//This method is used to display the user's enneagram personality type and description of the type.
-displayResult() {
+//This method is called after the user completes all the questions to calculate type
+//this method calls the display method for the user's determined type
+void calculateType(){
+		int type = 0;
+		Int[] array = scoreArray();
+		
+		for (int i = 0; i < array.length(); i++){
+			int current = array[i];
+  			if (current > type){
+       			type = current;
+       		}
+       	
+       	//call display method for calculated type
+       	switch (type){
+			case 1: 
+				display1();
+			case 2:
+				display2();
+				break;
+			case 3:
+				display3();
+				break;
+			case 4:
+				display4();
+				break;
+			case 5:
+				display5();
+				break;
+			case 6:
+				display6();
+				break;
+			case 7:
+				display7();
+				break;
+			case 8:
+				display8();
+				break;
+			case 9:
+				display9();
+				break;
+			}
+	}
 
 }

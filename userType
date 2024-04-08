@@ -1,0 +1,92 @@
+
+class userType{
+	int t1, t2, t3, t4, t5, t6, t7, t8, t9;
+	
+	//constructor
+	userType(){
+		t1, t2, t3, t4, t5, t6, t7, t8, t9 = 0;
+	}
+	
+	//updates score based on user's answer to question
+	public void updateScore(int type){
+		switch (type){
+			case 1: 
+				t1++;
+				break;
+			case 2:
+				t2++;
+				break;
+			case 3:
+				t3++;
+				break;
+			case 4:
+				t4++;
+				break;
+			case 5:
+				t5++;
+				break;
+			case 6:
+				t6++;
+				break;
+			case 7:
+				t7++;
+				break;
+			case 8:
+				t8++;
+				break;
+			case 9:
+				t9++;
+				break;
+			}
+	}
+	
+	Int[] scoreArray(){
+		Int[] array = new int[]{t1, t2, t3, t4, t5, t6, t7, t8, t9};
+		return array;
+	}
+	
+	int calculateType(){
+		int largest = 0;
+		Int[] array = scoreArray();
+		
+		for (int i = 0; i < array.length(); i++){
+			int current = array[i];
+  			if (current > largest){
+       			largest = current;
+       		}
+       	return largest;
+	
+	}
+	
+	
+}
+
+class question{
+	String textQuestion;
+	String textA, textB, textC; textD;
+	int ansA, ansB, ansC, ansD;
+	//or could use true/false if we go that route instead
+
+	//constructors
+	question(){
+		textQuestion = "";
+		textA, textB, textC, textD = "";
+		ansA, ansB, ansC, ansD = 0;	
+	}
+	
+	question(String question, String a, String b, String c, String d, int typeA, int typeB, int typeC, int typeD){
+		textQuestion = question;
+		textA = a;
+		textB = b;
+		textC = c;
+		textD = d;
+		ansA = typeA;
+		ansB = typeB;
+		ansC = typeC;
+		ansD = typeD;
+	}
+	
+	//set methods for all vars
+	
+	//get methods for all vars
+}

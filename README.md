@@ -10,11 +10,41 @@ We plan to build a personality quiz that evaluates users' personality type based
   <li>homepage</li>
   <li>takeTest</li>
   <li>calculateType</li>
+  <li>userType class </li>
+	<li>question class </li>	 
+	<li>display1To9</li>
+  <li>displayTypes</li>
+  <li> exitProgram</li>
+	<li> displayQuestion </li>
+	<li> getAnswer </li>
+	<li> validateAnswer </li>
+	<li> storeAnswer </li>
+	<li> nextQuestion</li>
+	
 </ul>
 <b>Emily</b>
 <ul>
   <li>display1To9</li>
   <li>displayTypes</li>
+</ul>
+
+<b>Andie</b>
+<ul>
+	<li>userType class </li>
+	<li>question class </li>
+	<li> calculateType method </li>
+</ul>
+
+<b>Steven</b>
+<ul>
+	<li>homePage </li>
+	<li>takeTest </li>
+	<li> exitProgram</li>
+	<li> displayQuestion </li>
+	<li> getAnswer </li>
+	<li> validateAnswer </li>
+	<li> storeAnswer </li>
+	<li> nextQuestion</li>
 </ul>
 
 <b>Contributors:</b>
