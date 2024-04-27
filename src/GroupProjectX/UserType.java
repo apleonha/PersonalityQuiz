@@ -1,4 +1,4 @@
-package GroupProjectX;
+package groupProjectX;
 
 
 public class UserType{

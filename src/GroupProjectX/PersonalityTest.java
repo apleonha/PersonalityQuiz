@@ -1,4 +1,4 @@
-package GroupProjectX;
+package groupProjectX;
 
 import javax.swing.JOptionPane;
 import javafx.application.Application;
@@ -27,7 +27,9 @@ import javafx.event.EventHandler;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.FlowPane;
 
-import java.awt.ScrollPane;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+
 import java.util.ArrayList;
 
 public class PersonalityTest extends Application{
@@ -107,9 +109,143 @@ public class PersonalityTest extends Application{
 	}
 	
 	public Scene viewTypes(Stage typesStage) {
+		//creating and labeling the pane
+		BorderPane typesPane = new BorderPane();	
+		Label titleLabel = new Label("The 9 Enneagram Types");
+		titleLabel.setFont(new Font("Arial", 28));
+				
+		//Center the label
+		BorderPane.setAlignment(titleLabel, javafx.geometry.Pos.CENTER);
+		typesPane.setTop(titleLabel);
+		
+		VBox buttons = new VBox();
+		Button type1 = new Button("Type 1:\nThe Reformer");
+		type1.setOnAction(e -> {
+			Stage stage1 = new Stage();
+			stage1.setTitle("Type 1: The Reformer");
+			stage1.setScene(display1(stage1));
+			stage1.show();
+		});
+		
+		Button type2 = new Button("Type 2:\nThe Helper");
+		type2.setOnAction(e -> {
+			Stage stage2 = new Stage();
+			stage2.setTitle("Type 2: The Helper");
+			stage2.setScene(display2(stage2));
+			stage2.show();
+		});
+		
+		Button type3 = new Button("Type 3:\nThe Achiever");
+		type3.setOnAction(e -> {
+			Stage stage3 = new Stage();
+			stage3.setTitle("Type 3: The Achiever");
+			stage3.setScene(display3(stage3));
+			stage3.show();
+		});
+		
+		Button type4 = new Button("Type 4:\nThe Individualist");
+		type4.setOnAction(e -> {
+			Stage stage4 = new Stage();
+			stage4.setTitle("Type 4: The Individualist");
+			stage4.setScene(display4(stage4));
+			stage4.show();
+		});
+		
+		Button type5 = new Button("Type 5:\nthe Investigator");
+		type5.setOnAction(e -> {
+			Stage stage5 = new Stage();
+			stage5.setTitle("Type 5: The Investigator");
+			stage5.setScene(display5(stage5));
+			stage5.show();
+		});
+		
+		Button type6 = new Button("Type 6:\nThe Loyalist");
+		type6.setOnAction(e -> {
+			Stage stage6 = new Stage();
+			stage6.setTitle("Type 6: The Loyalist");
+			stage6.setScene(display6(stage6));
+			stage6.show();
+		});
+		
+		Button type7 = new Button("Type 7:\nThe Enthusiast");
+		type7.setOnAction(e -> {
+			Stage stage7 = new Stage();
+			stage7.setTitle("Type 7: The Enthusiast");
+			stage7.setScene(display7(stage7));
+			stage7.show();
+		});
+		
+		Button type8 = new Button("Type 8:\nThe Challenger");
+		type8.setOnAction(e -> {
+			Stage stage8 = new Stage();
+			stage8.setTitle("Type 8: The Challenger");
+			stage8.setScene(display8(stage8));
+			stage8.show();
+		});
+		
+		Button type9 = new Button("Type 9:\nThe Peacemaker");
+		type9.setOnAction(e -> {
+			Stage stage9 = new Stage();
+			stage9.setTitle("Type 9: The Peacemaker");
+			stage9.setScene(display9(stage9));
+			stage9.show();
+		});
+		
+		
+		buttons.getChildren().addAll(type1, type2, type3, type4, type5,
+				type6, type7, type8, type9);
+		
+		
+		typesPane.setCenter(buttons);
+		BorderPane.setAlignment(buttons, javafx.geometry.Pos.CENTER);
+		
+		//Create button to exit program
+		Button exit = new Button("Exit\n");
+		exit.setMinSize(70, 50);
+		exit.setOnAction(e -> typesStage.close());
+		
+		typesPane.setBottom(exit);
+		BorderPane.setAlignment(exit, javafx.geometry.Pos.CENTER);
+		
+		Scene typesScene = new Scene(typesPane, 400, 500);
+		return typesScene;
+	}
+	
+	public Scene display1(Stage stage1) {
 		
 	}
 	
+	public Scene display2(Stage stage2) {
+		
+	}
+	
+	public Scene display3(Stage stage3) {
+		
+	}
+	
+	public Scene display4(Stage stage4) {
+		
+	}
+	
+	public Scene display5(Stage stage5) {
+		
+	}
+	
+	public Scene display6(Stage stage6) {
+		
+	}
+	
+	public Scene display7(Stage stage7) {
+		
+	}
+	
+	public Scene display8(Stage stage8) {
+		
+	}
+	
+	public Scene display9(Stage stage9) {
+		
+	}
 	
 	public static void testQuestions() {
 		Question q1 = new Question();
@@ -457,13 +593,15 @@ public Scene takeTest(Stage testStage) {
 			Text questionText = new Text(q.getTextQuestion());
 			ToggleGroup group = new ToggleGroup();
 			RadioButton a = new RadioButton(Question.textA);
+			a.setOnAction(e -> user.updateScore(q.getAnsA()));
 			a.setToggleGroup(group);
 			RadioButton b = new RadioButton(Question.textB);
 			b.setToggleGroup(group);
+			b.setOnAction(e -> user.updateScore(q.getAnsB()));
 			RadioButton c = new RadioButton(Question.textC);
 			c.setToggleGroup(group);
+			c.setOnAction(e -> user.updateScore(q.getAnsC()));
 			questionPane.getChildren().addAll(questionText, a, b, c);
-			
 		}
 		
 		HBox buttons = new HBox();
@@ -471,15 +609,77 @@ public Scene takeTest(Stage testStage) {
 		Button next = new Button("Next\n");
 		next.setMinSize(70, 50);
 		next.setOnAction(e -> {
-			
-		});
+			int type = user.calculateType();
+			switch (type){
+			case 1: 
+				Stage stage1 = new Stage();
+				stage1.setTitle("Type 1: The Reformer");
+				stage1.setScene(display1(stage1));
+				stage1.show();
+				break;
+			case 2:
+				Stage stage2 = new Stage();
+				stage2.setTitle("Type 2: The Helper");
+				stage2.setScene(display2(stage2));
+				stage2.show();
+				break;
+			case 3:
+				Stage stage3 = new Stage();
+				stage3.setTitle("Type 3: The Achiever");
+				stage3.setScene(display3(stage3));
+				stage3.show();
+				break;
+			case 4:
+				Stage stage4 = new Stage();
+				stage4.setTitle("Type 4: The Individualist");
+				stage4.setScene(display4(stage4));
+				stage4.show();
+				break;
+			case 5:
+				Stage stage5 = new Stage();
+				stage5.setTitle("Type 5: The Investigator");
+				stage5.setScene(display5(stage5));
+				stage5.show();
+				break;
+			case 6:
+				Stage stage6 = new Stage();
+				stage6.setTitle("Type 6: The Loyalist");
+				stage6.setScene(display6(stage6));
+				stage6.show();
+				break;
+			case 7:
+				Stage stage7 = new Stage();
+				stage7.setTitle("Type 7: The Enthusiast");
+				stage7.setScene(display7(stage7));
+				stage7.show();
+				break;
+			case 8:
+				Stage stage8 = new Stage();
+				stage8.setTitle("Type 8: The Challenger");
+				stage8.setScene(display8(stage8));
+				stage8.show();
+				break;
+			case 9:
+				Stage stage9 = new Stage();
+				stage9.setTitle("Type 9: The Peacemaker");
+				stage9.setScene(display9(stage9));
+				stage9.show();
+				break;
+			}
+			});
 		
 		buttons.getChildren().addAll(exit, next);
 		buttons.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
 		testPane.setCenter(questionPane);
 		
 		testPane.setBottom(buttons);
-		Scene testScene = new Scene(testPane,1500, 1500);
+		
+		ScrollPane sp = new ScrollPane();
+		sp.setContent(testPane);
+		sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+		sp.setHbarPolicy(ScrollBarPolicy.NEVER);
+		
+		Scene testScene = new Scene(sp,500, 500);
 		
 		return testScene;
 }
