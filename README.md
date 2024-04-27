@@ -13,19 +13,12 @@ We plan to build a personality quiz that evaluates users' personality type based
   <li>userType class </li>
 	<li>question class </li>	 
 	<li>display1To9</li>
-  <li>displayTypes</li>
-  <li> exitProgram</li>
-	<li> displayQuestion </li>
-	<li> getAnswer </li>
-	<li> validateAnswer </li>
-	<li> storeAnswer </li>
-	<li> nextQuestion</li>
+  <li>viewTypes</li>
 	
 </ul>
 <b>Emily</b>
 <ul>
-  <li>display1To9</li>
-  <li>displayTypes</li>
+  <li>display1 through display9</li>
 </ul>
 
 <b>Andie</b>
@@ -33,18 +26,14 @@ We plan to build a personality quiz that evaluates users' personality type based
 	<li>userType class </li>
 	<li>question class </li>
 	<li> calculateType method </li>
+	<li> questions method </li>
+	<li> takeTest </li>
+	<li> viewTypes</li>
+	<li> homePage </li>
 </ul>
 
 <b>Steven</b>
 <ul>
-	<li>homePage </li>
-	<li>takeTest </li>
-	<li> exitProgram</li>
-	<li> displayQuestion </li>
-	<li> getAnswer </li>
-	<li> validateAnswer </li>
-	<li> storeAnswer </li>
-	<li> nextQuestion</li>
 </ul>
 
 <b>Contributors:</b>
@@ -54,3 +43,8 @@ Andie Leonhard @apleonha
 Emily Weed @emilyweed
 
 Steven Pursley @spursley18
+
+<b> Enneagram Information and Questions Sourced from: <b>
+https://globalleadershipfoundation.com/rheti/test.html
+https://www.enneagraminstitute.com/type-descriptions/
+https://www.narrativeenneagram.org/tour-the-nine-types/
