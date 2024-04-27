@@ -54,6 +54,7 @@ public class PersonalityTest extends Application{
 		launch(args);
 	}
 
+	//method that displays homePage and menu
 	public BorderPane homePage(Stage primaryStage) {
 		//creating and labeling the pane
 		BorderPane homePane = new BorderPane();	
@@ -64,6 +65,7 @@ public class PersonalityTest extends Application{
 		BorderPane.setAlignment(titleLabel, javafx.geometry.Pos.CENTER);
 		homePane.setTop(titleLabel);
 		
+		//writing and formatting meu description
 		Text description = new Text("The Enneagram is a personality typing tool used for better understanding"
 				+ "a person's motivations, emotions, and beliefs and how they affect a person's patterns and behavior."
 				+ "The Enneagram includes 9 distinct types to describe the different motivations and fears that contribute"
@@ -108,6 +110,8 @@ public class PersonalityTest extends Application{
 		return homePane;
 	}
 	
+	//method that displays page with all of the types
+	//links to individual pages for each type with more info
 	public Scene viewTypes(Stage typesStage) {
 		//creating and labeling the pane
 		BorderPane typesPane = new BorderPane();	
@@ -118,6 +122,8 @@ public class PersonalityTest extends Application{
 		BorderPane.setAlignment(titleLabel, javafx.geometry.Pos.CENTER);
 		typesPane.setTop(titleLabel);
 		
+		//creating buttons for each type
+		//link to page to display more info on type
 		VBox buttons = new VBox();
 		Button type1 = new Button("Type 1:\nThe Reformer");
 		type1.setOnAction(e -> {
@@ -191,11 +197,11 @@ public class PersonalityTest extends Application{
 			stage9.show();
 		});
 		
-		
+		//adding buttons to pane
 		buttons.getChildren().addAll(type1, type2, type3, type4, type5,
 				type6, type7, type8, type9);
 		
-		
+		//adding to border pane and centering
 		typesPane.setCenter(buttons);
 		BorderPane.setAlignment(buttons, javafx.geometry.Pos.CENTER);
 		
@@ -247,6 +253,8 @@ public class PersonalityTest extends Application{
 		
 	}
 	
+	//creates new object for each test question and adds to questionList array list
+	//sets question text, and what answers correspond with which type
 	public static void testQuestions() {
 		Question q1 = new Question();
 		q1.setTextQuestion("I am romantic and imaginative.");
@@ -567,8 +575,9 @@ public class PersonalityTest extends Application{
 		
 	}
 	
-	
+//displays test page and allows users to fill in answers to find their type	
 public Scene takeTest(Stage testStage) {
+		//create user type object to keep track of changes to score to find type
 		UserType user = new UserType();
 		
 		//creating and labeling the pane
@@ -586,9 +595,10 @@ public Scene takeTest(Stage testStage) {
 		exit.setMinSize(70, 50);
 		exit.setOnAction(e -> testStage.close());
 		
+		//create vbox to hold questions
 		VBox questionPane = new VBox();
 		
-
+		//use loop to populate with all questions from questionList array list
 		for(Question q : questionList) {
 			Text questionText = new Text(q.getTextQuestion());
 			ToggleGroup group = new ToggleGroup();
@@ -605,7 +615,8 @@ public Scene takeTest(Stage testStage) {
 		}
 		
 		HBox buttons = new HBox();
-		//Create button to calculate score
+		
+		//Create button to calculate type and display appropriate type page
 		Button next = new Button("Next\n");
 		next.setMinSize(70, 50);
 		next.setOnAction(e -> {
@@ -668,12 +679,14 @@ public Scene takeTest(Stage testStage) {
 			}
 			});
 		
+		//add buttons to pane and center
 		buttons.getChildren().addAll(exit, next);
 		buttons.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
 		testPane.setCenter(questionPane);
 		
 		testPane.setBottom(buttons);
 		
+		//make window scrollable
 		ScrollPane sp = new ScrollPane();
 		sp.setContent(testPane);
 		sp.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
