@@ -137,14 +137,14 @@ class Question{
 
 }
 
-class displayQuestion{
+class DisplayQuestion{
 	public RadioButton a;
 	public RadioButton b;
 	public RadioButton c;
 	public ToggleGroup group;
 	public Question q;
 	
-	public displayQuestion(Question q) {
+	public DisplayQuestion(Question q) {
 		a = new RadioButton(Question.textA);
 		b = new RadioButton(Question.textB);
 		c = new RadioButton(Question.textC);

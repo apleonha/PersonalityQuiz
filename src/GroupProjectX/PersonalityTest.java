@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 public class PersonalityTest extends Application{
 	public static ArrayList<Question> questionList = new ArrayList<>();
-	public static ArrayList<displayQuestion> answers = new ArrayList<>();
+	
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -45,7 +45,9 @@ public class PersonalityTest extends Application{
 		testQuestions();
 		launch(args);
 	}
-
+	
+	
+	//this method displays the homepage and menu
 	public static BorderPane homePage(Stage primaryStage) {
 		//creating and labeling the pane
 		BorderPane homePane = new BorderPane();
@@ -101,7 +103,7 @@ public class PersonalityTest extends Application{
 	}
 
 
-
+	//this method write the test questions and adds to array list
 	public static void testQuestions() {
 		Question q1 = new Question();
 		q1.setTextQuestion("I am romantic and imaginative.");
@@ -422,7 +424,8 @@ public class PersonalityTest extends Application{
 
 	}
 
-
+//this method displays the test for users to take
+//calcualates user type and displays appropriate type window
 public static Scene takeTest(Stage testStage) {
 		UserType user = new UserType();
 
@@ -442,12 +445,10 @@ public static Scene takeTest(Stage testStage) {
 		exit.setOnAction(e -> testStage.close());
 
 		VBox questionPane = new VBox();
-
-
 		
 		
 		for(Question q : questionList) {
-			displayQuestion dq = new displayQuestion(q);
+			DisplayQuestion dq = new DisplayQuestion(q);
 			VBox pane = new VBox(dq.displayQ(q));
 			questionPane.getChildren().add(pane);
 			answers.add(dq);
