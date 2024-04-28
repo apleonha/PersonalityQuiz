@@ -1,4 +1,6 @@
-package application;
+package GroupProjectX;
+
+import java.util.HashMap;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -7,8 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.util.HashMap;
 
 public class Display1to9 {
 
@@ -54,7 +56,7 @@ public class Display1to9 {
 				+ "At their worst, nines tend to dissociate, become depersonalized, and avoid problems at all costs.");
 	}
 
-	public static Scene createScene(String type, Stage primaryStage) {
+	public static Scene createScene(String type, Stage typeStage) {
 		BorderPane typePane = new BorderPane();
 
 		// displays
@@ -63,15 +65,29 @@ public class Display1to9 {
 		BorderPane.setAlignment(typeLabel, Pos.CENTER);
 
 		String typeInfo = typeInformation.get(type);
-		Label typeInfoLabel = new Label(typeInfo);
+		Text typeInfoLabel = new Text(typeInfo);
+		typeInfoLabel.setWrappingWidth(500);
 
 		// back button
 		Button backButton = new Button("Back to Types");
-		backButton.setOnAction(e -> primaryStage.setScene(DisplayType.createScene(primaryStage)));
+		backButton.setOnAction(e -> {
+			Stage typesStage = new Stage();
+			typesStage.setTitle("The 9 Enneagram Types");
+			typesStage.setScene(DisplayType.createScene(typesStage, typeStage));
+			typesStage.show();
+			typeStage.close();
+		});
+
+		//home button
+		Button homeButton = new Button("Home");
+		homeButton.setOnAction(e -> {
+			typeStage.close();
+			
+		});
 
 		VBox centerContent = new VBox(10);
 		centerContent.setAlignment(Pos.CENTER);
-		centerContent.getChildren().addAll(typeLabel, typeInfoLabel, backButton);
+		centerContent.getChildren().addAll(typeLabel, typeInfoLabel, backButton, homeButton);
 
 		typePane.setCenter(centerContent);
 

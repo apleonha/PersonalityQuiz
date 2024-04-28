@@ -1,13 +1,14 @@
 package application;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class DisplayType {
 
-	public static Scene createScene(Stage primaryStage) {
+	public static Scene createScene(Stage typesStage, Stage primaryStage) {
 		BorderPane typesPane = new BorderPane();
 
 		// list with types
@@ -19,12 +20,25 @@ public class DisplayType {
 				);
 
 		listView.setOnMouseClicked(e -> {
+			Stage typeXStage = new Stage();
 			String selectedType = listView.getSelectionModel().getSelectedItem();
-			primaryStage.setScene(Display1to9.createScene(selectedType, primaryStage));
+			typeXStage.setScene(Display1to9.createScene(selectedType, typeXStage));
+			typeXStage.show();
+			typesStage.close();
+		});
+
+		//home button
+		Button homeButton = new Button("Home");
+		homeButton.setOnAction(e -> {
+			Scene scene = new Scene(PersonalityTest.homePage(primaryStage), 600, 450);
+			primaryStage.setScene(scene); // Place the scene in the stage
+			primaryStage.show(); // Display the stage
 		});
 
 		typesPane.setCenter(listView);
+		typesPane.setBottom(homeButton);
 		return new Scene(typesPane, 600, 450);
 	}
 
 }
+
