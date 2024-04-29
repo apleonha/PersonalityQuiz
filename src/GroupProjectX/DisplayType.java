@@ -7,7 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class DisplayType {
-
+	//creates a scene to display the types menu
 	public static Scene createScene(Stage typesStage, Stage primaryStage) {
 		BorderPane typesPane = new BorderPane();
 
@@ -18,7 +18,7 @@ public class DisplayType {
 				"Type 4: The Individualist", "Type 5: The Investigator", "Type 6: The Loyalist",
 				"Type 7: The Enthusiast", "Type 8: The Challenger", "Type 9: The Peacemaker"
 				);
-
+		//linking to specific windows for each type
 		listView.setOnMouseClicked(e -> {
 			Stage typeXStage = new Stage();
 			String selectedType = listView.getSelectionModel().getSelectedItem();
@@ -33,6 +33,7 @@ public class DisplayType {
 			Scene scene = new Scene(PersonalityTest.homePage(primaryStage), 600, 450);
 			primaryStage.setScene(scene); // Place the scene in the stage
 			primaryStage.show(); // Display the stage
+			typesStage.close();
 		});
 
 		typesPane.setCenter(listView);

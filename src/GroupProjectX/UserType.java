@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class UserType{
+	//stores a score for the user for each type
 	int t1, t2, t3, t4, t5, t6, t7, t8, t9;
 
 	//constructor, initializes all scores to zero at beginning of test
@@ -23,7 +24,7 @@ public class UserType{
 
 	}
 
-	//updates score based on user's answer to question
+	//updates score for specified type based on user's answer to each individual question
 	public void updateScore(int type){
 		switch (type){
 			case 1:
@@ -55,27 +56,34 @@ public class UserType{
 				break;
 			}
 	}
-
+	
+	//storing user's score for traversal
 	int[] scoreArray(){
 		int[] array = new int[]{t1, t2, t3, t4, t5, t6, t7, t8, t9};
 		return array;
 	}
-
-	int calculateType(){
+	
+	//calculating which type had highest score for the user
+	int calculateType(int[] array){
 		int largest = 0;
-		int[] array = scoreArray();
+		int type = 0;
 
-		for (int current : array) {
-			if (current > largest){
-       			largest = current;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] > largest){
+       			largest = array[i];
+       			type = i+1;
        		}
 	}
-	return largest;
+	return type;
+
 
 }
 }
+
+
 
 class Question{
+	//stores questions, answers, and types corresponding to each answer
 	String textQuestion;
 	static String textA = "Never";
 	static String textB = "Sometimes";
@@ -86,18 +94,9 @@ class Question{
 	//constructors
 	public Question(){
 		textQuestion = "";
-
-	}
-
-	public Question(String question, String a, String b, String c, int typeA, int typeB, int typeC){
-		textQuestion = question;
-		textA = a;
-		textB = b;
-		textC = c;
-
-		ansA = typeA;
-		ansB = typeB;
-		ansC = typeC;
+		ansA = 0;
+		ansB = 0;
+		ansC = 0;
 	}
 
 	//set methods for all vars
@@ -137,19 +136,24 @@ class Question{
 
 }
 
+
+
 class DisplayQuestion{
+	//stores parts for displaying each question
 	public RadioButton a;
 	public RadioButton b;
 	public RadioButton c;
 	public ToggleGroup group;
 	public Question q;
 	
+	//constructor, sets up all pieces given just the question
 	public DisplayQuestion(Question q) {
 		a = new RadioButton(Question.textA);
 		b = new RadioButton(Question.textB);
 		c = new RadioButton(Question.textC);
 		
 		group  = new ToggleGroup();
+
 		a.setToggleGroup(group);
 		b.setToggleGroup(group);
 		c.setToggleGroup(group);
@@ -157,6 +161,7 @@ class DisplayQuestion{
 		
 	}
 	
+	//get methods for each node
 	public ToggleGroup getGroup() {
 		return this.group;
 	}
@@ -176,11 +181,14 @@ class DisplayQuestion{
 	public Question getQ() {
 		return this.q;
 	}
+	
+	//displays each question in its own pane and returns it
 	public Pane displayQ(Question q) {
 		VBox questionPane = new VBox();
 		
 		Text questionText = new Text(q.getTextQuestion());
-
+		questionText.setWrappingWidth(350);
+		
 		questionPane.getChildren().addAll(questionText, this.a, this.b, this.c);
 		return questionPane;
 	}

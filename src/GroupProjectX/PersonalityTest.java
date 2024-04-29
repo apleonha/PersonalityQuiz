@@ -1,20 +1,15 @@
 package application;
 
-import java.util.ArrayList;
+mport java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -25,7 +20,7 @@ import javafx.stage.Stage;
 
 public class PersonalityTest extends Application{
 	public static ArrayList<Question> questionList = new ArrayList<>();
-	
+	public static ArrayList<DisplayQuestion> answers = new ArrayList<>();
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -45,9 +40,7 @@ public class PersonalityTest extends Application{
 		testQuestions();
 		launch(args);
 	}
-	
-	
-	//this method displays the homepage and menu
+
 	public static BorderPane homePage(Stage primaryStage) {
 		//creating and labeling the pane
 		BorderPane homePane = new BorderPane();
@@ -103,14 +96,14 @@ public class PersonalityTest extends Application{
 	}
 
 
-	//this method write the test questions and adds to array list
+
 	public static void testQuestions() {
 		Question q1 = new Question();
 		q1.setTextQuestion("I am romantic and imaginative.");
 		q1.setAnsA(3);
 		q1.setAnsB(2);
 		q1.setAnsC(4);
-		questionList.add(0, q1);
+		questionList.add(q1);
 
 		Question q2 = new Question();
 		q2.setTextQuestion("I avoid confrontations.");
@@ -424,21 +417,32 @@ public class PersonalityTest extends Application{
 
 	}
 
-//this method displays the test for users to take
-//calcualates user type and displays appropriate type window
-public static Scene takeTest(Stage testStage) {
-		UserType user = new UserType();
 
+public static Scene takeTest(Stage testStage) {
+		
 		//creating and labeling the pane
+		//adding the header with title and instructions
+		//organizing and formatting header
 		BorderPane testPane = new BorderPane();
+		VBox header = new VBox();
 		Label title = new Label("The Enneagram Test");
 		title.setFont(new Font("Arial", 28));
 
-		//Center the label
-		BorderPane.setAlignment(title, javafx.geometry.Pos.CENTER);
-		testPane.setTop(title);
-
-
+		Text instructions = new Text("Respond to each statement according to whether you feel"
+				+ " it applies to you always, sometimes, or never. For best results, "
+				+ "be sure to answer every question.");
+		instructions.setWrappingWidth(450);
+		instructions.setTextAlignment(TextAlignment.CENTER);
+		
+		Insets insets1 = new Insets(25);
+		
+		header.getChildren().addAll(title, instructions);
+		header.setAlignment(Pos.CENTER);
+		
+		BorderPane.setAlignment(header, javafx.geometry.Pos.CENTER);
+		testPane.setTop(header);
+		BorderPane.setMargin(header, insets1);
+		
 		//Create button to exit program
 		Button exit = new Button("Exit\n");
 		exit.setMinSize(70, 50);
@@ -446,24 +450,39 @@ public static Scene takeTest(Stage testStage) {
 
 		VBox questionPane = new VBox();
 		
-		
 		for(Question q : questionList) {
 			DisplayQuestion dq = new DisplayQuestion(q);
 			VBox pane = new VBox(dq.displayQ(q));
 			questionPane.getChildren().add(pane);
 			answers.add(dq);
-			
 		}
-
-		HBox buttons = new HBox();
+		HBox buttons = new HBox(); //for organizing the buttons
 		
 		//Create button to calculate score
 		Button next = new Button("Next\n");
 		next.setMinSize(70, 50);
 		next.setOnAction(e -> {
+			//declares new UserType instance 
+			UserType user = new UserType();
 			
-			int type = user.calculateType();
+		//searches all displayed questions and updates score according to answers
+		//allows skipped questions (easier for testing purposes)
+			for(DisplayQuestion dq : answers) {
+				if(dq.getA().isSelected()) {
+					user.updateScore(dq.getQ().getAnsA());
+				} else if(dq.getB().isSelected()) {
+					user.updateScore(dq.getQ().getAnsB());
+				} else if(dq.getC().isSelected()) {
+					user.updateScore(dq.getQ().getAnsC());
+				} else
+					continue;
+			}
 			
+			//calculates type
+			int[] array = user.scoreArray();
+			int type = user.calculateType(array);
+			
+			//displays window for calculated type
 			switch (type){
 			case 1:
 				Stage stage1 = new Stage();
@@ -529,16 +548,21 @@ public static Scene takeTest(Stage testStage) {
 				testStage.close();
 				break;
 			default:
-				testStage.close();
+				Text error = new Text("Error.");
+				buttons. getChildren().add(error);
 			
 			}
 			});
-
+		
+		//putting everything together
 		buttons.getChildren().addAll(exit, next);
 		buttons.setAlignment(javafx.geometry.Pos.BOTTOM_CENTER);
 		testPane.setCenter(questionPane);
-
+		Insets insets2 = new Insets(50);
+		BorderPane.setMargin(questionPane, insets2);
+		
 		testPane.setBottom(buttons);
+		
 
 		ScrollPane sp = new ScrollPane();
 		sp.setContent(testPane);
@@ -550,4 +574,4 @@ public static Scene takeTest(Stage testStage) {
 		return testScene;
 }
 
-}
+}}
