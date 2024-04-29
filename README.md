@@ -7,28 +7,30 @@ We plan to build a personality quiz that evaluates users' personality type based
 <b>Methods & Classes</b>
 <ul>
   <li>main</li>
+<li> start </li>
   <li>homepage</li>
+<li> testQuestions </li>
   <li>takeTest</li>
-  <li>calculateType</li>
   <li>userType class </li>
-	<li>question class </li>	 
-	<li>display1To9</li>
-  <li>viewTypes</li>
+	<li>Question class </li>
+	<li> DisplayQuestion class </li>
+	<li>Display1To9</li>
+  <li>DisplayTypes</li>
 	
 </ul>
 <b>Emily</b>
 <ul>
-  <li>display1 through display9</li>
+  <li>Display1To9</li>
+<li>DisplayTypes</li>
 </ul>
 
 <b>Andie</b>
 <ul>
-	<li>userType class </li>
-	<li>question class </li>
-	<li> calculateType method </li>
-	<li> questions method </li>
+	<li>UserType class </li>
+	<li>Question class </li>
+	<li>DisplayQuestion class </li>
+	<li> testQuestions method </li>
 	<li> takeTest </li>
-	<li> viewTypes</li>
 	<li> homePage </li>
 </ul>
 

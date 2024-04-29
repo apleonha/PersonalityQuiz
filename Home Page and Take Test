@@ -2,39 +2,86 @@
 // Steven Pursley
 // 8 April 2024
 // These methods help create the homepage and also allow the user to take the enneagram personality test.
+java import java.util.Scanner;
 
 //This method is used to display the homepage of the personality quiz.
-homePage() {
+class homePage() {
+	Scanner scanner = new Scanner(System.in);
+}
 
+public void displayHomePage() {
+System.out.println("Welcome to the Enneagram Personality Quiz!");
+
+System.out.println("Please select an option:");
+
+System.out.println("1. Start Test");         
+
+System.out.println("2. Exit Program");
 }
 
 //This method allow the user to start the quiz.
-takeTest() {
+public void startTest() {
+TakeTest test = new TakeTest();         
 
+test.startQuiz();
 }
 
 //This allows the user to exit the program.
-exitProgram() {
+public void exitProgram() {
+System.out.println("Goodbye! Thank you for taking the Enneagram Personality Quiz.");         
 
+System.exit(0);
 }
 
-//This method displays the current question the user is on.
-displayQuestion() {
+class TakeTest {     
+	Scanner scanner = new Scanner(System.in); 
 
+int questionIndex = 0;
+
+String[] questions = {"what is your favorite color?", "What is your favorite animal?'};
+
+String[] answers = new String[questions.length];
+
+//This method displays the current question the user is on.
+public void displayQuestion() {         
+
+System.out.println("Question " + (questionIndex + 1) + ": " + questions[questionIndex]);     
+}
+
+public void startQuiz() {
+
+while
+	(questionIndex < questions.length) {
+
+		displayQuestion();
+				getAnswer();
+
+questionIndex++;
+}
+
+calculateResult();
+	displayResult();
 }
 
 //This method is used to get the users answer to the current question.
-getAnswer() {
+public string getAnswer() {
+System.out.print("Enter your answer: ");         
+	
+	String answer = scanner.nextLine();
 
+	validateAnswer(answer);
+
+	storeAnswer(answer);
 }
 
 //This method is used to validate the user's answer to the current question.
-validateAnswer() {
+public void validateAnswer(String answer) {
 }
 
 //This method is used to store the user's answer to the current question.
-storeAnswer() {
+public void storeAnswer(String answer) {
 
+	answers[questionIndex] = answer;
 }
 
 //This method is called after the user submits their answer to the current question.

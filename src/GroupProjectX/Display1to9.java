@@ -1,4 +1,4 @@
-package GroupProjectX;
+package application;
 
 import java.util.HashMap;
 
@@ -13,7 +13,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Display1to9 {
-
+	
+	//storing all type info to be displayed
 	private static HashMap<String, String> typeInformation = new HashMap<>();
 
 	// info for each enneagram type
@@ -55,7 +56,8 @@ public class Display1to9 {
 				+ "At their best, they are supportive, present, and seek deep connections with their peers."
 				+ "At their worst, nines tend to dissociate, become depersonalized, and avoid problems at all costs.");
 	}
-
+	
+	//creating a scene to display info for prompted type
 	public static Scene createScene(String type, Stage typeStage) {
 		BorderPane typePane = new BorderPane();
 
