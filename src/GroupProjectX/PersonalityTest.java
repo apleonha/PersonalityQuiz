@@ -1,6 +1,6 @@
 package application;
 
-mport java.util.ArrayList;
+import java.util.ArrayList;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
