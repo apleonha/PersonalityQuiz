@@ -2,106 +2,69 @@
 // Steven Pursley
 // 8 April 2024
 // These methods help create the homepage and also allow the user to take the enneagram personality test.
-java import java.util.Scanner;
+class Homepage {     
+	private JTextArea textArea = new JTextArea(); 
 
-//This method is used to display the homepage of the personality quiz.
-class homePage() {
-	Scanner scanner = new Scanner(System.in);
-}
+public void displayHomePage() {         
+	JFrame frame = new JFrame("Enneagram Personality Quiz");
 
-public void displayHomePage() {
-System.out.println("Welcome to the Enneagram Personality Quiz!");
 
-System.out.println("Please select an option:");
+String welcomeMessage = "Welcome to the Enneagram Personality Quiz!\n";
 
-System.out.println("1. Start Test");         
+ String options = "Please select an option:\n1. Start Test\n2. View Enneagram Types\n3. Exit Program";
 
-System.out.println("2. Exit Program");
-}
+ textArea.append(welcomeMessage + options);
 
-//This method allow the user to start the quiz.
-public void startTest() {
-TakeTest test = new TakeTest();         
+ JButton startTestButton = new JButton("Start Test");
 
-test.startQuiz();
-}
+startTestButton.addActionListener(new ActionListener() {
+		@Override  
+		public void actionPerformed(ActionEvent e) {
+			TakeTest test = new TakeTest();                 
+			test.startTest();
+		}         
+	}); 
 
-//This allows the user to exit the program.
-public void exitProgram() {
-System.out.println("Goodbye! Thank you for taking the Enneagram Personality Quiz.");         
+	JButton viewTypesButton = new JButton("View Enneagram Types");
 
-System.exit(0);
-}
+	viewTypesButton.addActionListener(new ActionListener() {
+		@Override
+		 public void actionPerformed(ActionEvent e) {
+			displayTypes();             
+		}         
+	});
+
+	JButton exitButton = new JButton("Exit Program"); 
+
+	exitButton.addActionListener(new ActionListener() {
+		@Override  
+		public void actionPerformed(ActionEvent e) { 
+			System.exit(0);             
+		}         
+	}); 
 
 class TakeTest {     
-	Scanner scanner = new Scanner(System.in); 
 
-int questionIndex = 0;
+	private JTextArea textArea = new JTextArea();     
+	private int questionIndex = 0;
+	private Question[] questions = new Question[];
 
-String[] questions = {"what is your favorite color?", "What is your favorite animal?'};
+public void startTest() {         
+	displayQuestion();     
+	} 
 
-String[] answers = new String[questions.length];
+private void displayQuestion() {         
+	if (questionIndex < questions.length) { 
+		textArea.setText(questions[questionIndex].getTextQuestion());
+			 } 
+			else {             
+				calculateResult();      
+			}     
+		} 
 
-//This method displays the current question the user is on.
-public void displayQuestion() {         
 
-System.out.println("Question " + (questionIndex + 1) + ": " + questions[questionIndex]);     
-}
 
-public void startQuiz() {
 
-while
-	(questionIndex < questions.length) {
-
-		displayQuestion();
-				getAnswer();
-
-questionIndex++;
-}
-
-calculateResult();
-	displayResult();
-}
-
-//This method is used to get the users answer to the current question.
-public string getAnswer() {
-System.out.print("Enter your answer: ");         
-	
-	String answer = scanner.nextLine();
-
-	validateAnswer(answer);
-
-	storeAnswer(answer);
-}
-
-//This method is used to validate the user's answer to the current question.
-public void validateAnswer(String answer) {
-}
-
-//This method is used to store the user's answer to the current question.
-public void storeAnswer(String answer) {
-
-	answers[questionIndex] = answer;
-}
-
-//This method is called after the user submits their answer to the current question.
-//calls method to update user score
-nextQuestion() {
-
-}
-
-//This method is called after the user completes all the questions to calculate type
-//this method calls the display method for the user's determined type
-void calculateType(){
-		int type = 0;
-		Int[] array = scoreArray();
-		
-		for (int i = 0; i < array.length(); i++){
-			int current = array[i];
-  			if (current > type){
-       			type = current;
-       		}
-       	
        	//call display method for calculated type
        	switch (type){
 			case 1: 
