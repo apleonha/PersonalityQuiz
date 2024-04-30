@@ -30,12 +30,13 @@ We plan to build a personality quiz that evaluates users' personality type based
 	<li>Question class </li>
 	<li>DisplayQuestion class </li>
 	<li> testQuestions method </li>
-	<li> takeTest </li>
-	<li> homePage </li>
+	
 </ul>
 
 <b>Steven</b>
 <ul>
+	<li> takeTest </li>
+	<li> homePage </li>
 </ul>
 
 <b>Contributors:</b>
