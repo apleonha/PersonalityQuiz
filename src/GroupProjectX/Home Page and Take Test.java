@@ -2,6 +2,13 @@
 // Steven Pursley
 // 8 April 2024
 // These methods help create the homepage and also allow the user to take the enneagram personality test.
+
+import java.util.HashMap;
+import javax.swing.*;
+import javax.swing.JTextArea;
+import java.awt.*; 
+import java.awt.event.*;
+
 class Homepage {     
 	private JTextArea textArea = new JTextArea(); 
 
